@@ -3,8 +3,6 @@ const context=canvas.getContext("2d");
 
 a=canvas.width;
 b=canvas.height;
-a1=a-60;
-b1=b-80;
 
 const rand1 = function(num) {
 	return Math.floor(Math.random() * num) + num/2;
