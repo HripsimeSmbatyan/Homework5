@@ -3,7 +3,6 @@ const context=canvas.getContext("2d");
 
 a=canvas.width;
 b=canvas.height;
-
 const rand1 = function(num) {
 	return Math.floor(Math.random() * num) + num/2;
 };
@@ -54,7 +53,7 @@ const gamedata=
 		y: rand2(b)-100,
 		xdelta: 5,
 		ydelta:3,
-		imagevil: Badguyimg1
+		imagebd: Badguyimg1
 	},
 	Badguy2: {
 		width: 60,
@@ -63,7 +62,7 @@ const gamedata=
 		y: rand2(b)-100,
 		xdelta: 5,
 		ydelta:3,
-		imagevil: Badguyimg4
+		imagebd: Badguyimg4
 	},
 	Badguy3: {
 		width: 60,
@@ -72,7 +71,7 @@ const gamedata=
 		y: rand2(b)-100,
 		xdelta: 5,
 		ydelta:3,
-		imagevil: Badguyimg5
+		imagebd: Badguyimg5
 	}
 };
 
@@ -84,11 +83,11 @@ const draw=function() {
 	
 	context.drawImage(Backimg, 0, 0, a, b);
 	context.drawImage(heroimg, hero.x, hero.y, hero.width, hero.height);
-	context.drawImage(Badguy1.imagevil, Badguy1.x, Badguy1.y, Badguy1.width, Badguy1.height);
+	context.drawImage(Badguy1.imagebd, Badguy1.x, Badguy1.y, Badguy1.width, Badguy1.height);
 	if(gamedata.levelstart>=5)
-		context.drawImage(Badguy2.imagevil, Badguy2.x, Badguy2.y, Badguy2.width, Badguy2.height);
+		context.drawImage(Badguy2.imagebd, Badguy2.x, Badguy2.y, Badguy2.width, Badguy2.height);
 	if(gamedata.levelstart>=10)
-		context.drawImage(Badguy3.imagevil, Badguy3.x, Badguy3.y, Badguy3.width, Badguy3.height);
+		context.drawImage(Badguy3.imagebd, Badguy3.x, Badguy3.y, Badguy3.width, Badguy3.height);
 	if(Badguy1.x<=hero.x+hero.width && Badguy1.x+Badguy1.width>=hero.x && Badguy1.y+Badguy1.height>=hero.y && hero.y+hero.height>=Badguy1.y)
 		alert("Oops");
 	if(gamedata.levelstart>=5 && (Badguy2.x<=hero.x+hero.width && Badguy2.x+Badguy2.width>=hero.x && Badguy2.y+Badguy2.height>=hero.y && hero.y+hero.height>=Badguy2.y))
@@ -96,17 +95,17 @@ const draw=function() {
 	if(gamedata.levelstart>=10 && (Badguy3.x<=hero.x+hero.width && Badguy3.x+Badguy3.width>=hero.x && Badguy3.y+Badguy3.height>=hero.y && hero.y+hero.height>=Badguy3.y))
 		alert("Oops");
 };
-const updatevil=function()
+const updatebg1=function()
 {
 	if(Badguy1.x<=0)
 	{
 		gamedata.levelstart=gamedata.levelstart+1;
-		Badguy1.imagevil=Badguyimg2;
+		Badguy1.imagebd=Badguyimg2;
 		Badguy1.xdelta=-rand(15);
 	}
 	if(Badguy1.x>=a-Badguy1.width)
 	{
-		Badguy1.imagevil=Badguyimg1;
+		Badguy1.imagebd=Badguyimg1;
 		Badguy1.x=a-Badguy1.width;
 		Badguy1.xdelta=rand(15);
 	}
@@ -123,16 +122,16 @@ const updatevil=function()
 	Badguy1.x=Badguy1.x-Badguy1.xdelta;
 	Badguy1.y=Badguy1.y-Badguy1.ydelta;
 }
-const updatevil2=function()
+const updatebg2=function()
 {
 	if(Badguy2.x<=0)
 	{
-		Badguy2.imagevil=villainimage3;
+		Badguy2.imagebd=villainimage3;
 		Badguy2.xdelta=-rand(15);
 	}
 	if(Badguy2.x>=a-Badguy2.width)
 	{
-		Badguy2.imagevil=Badguyimg3;
+		Badguy2.imagebd=Badguyimg3;
 		Badguy2.x=a-Badguy2.width;
 		Badguy2.xdelta=rand(15);
 	}
@@ -149,7 +148,7 @@ const updatevil2=function()
 	Badguy2.x=Badguy2.x-Badguy2.xdelta;
 	Badguy2.y=Badguy2.y-Badguy2.ydelta;
 }
-const updatevil3=function()
+const updatebg3=function()
 {
 	if(Badguy3.x<=0)
 	{
@@ -222,9 +221,9 @@ const loop=function()
 {
 	draw();
 	update();
-	updatevil();
-	updatevil2();
-	updatevil3();
+	updatebg1();
+	updatebg2();
+	updatebg3();
 	requestAnimationFrame(loop);
 };
 loop();
